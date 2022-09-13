@@ -1,0 +1,147 @@
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   box-sizing: border-box;
+}
+
+html, body {
+   height: 100%;
+}
+
+.wrapper {
+   height: 200px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   position: relative;
+   top: 50%;
+   left: 50%;
+
+   transform: translate(-50%, -50%);
+}
+.button {
+   display: inline-block;
+
+   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+   text-decoration: none;
+
+   position: relative;   
+}
+
+.button::before,
+.button::after {
+   content: '';
+   margin: 0 0 0 -40px;
+   width: 100px;
+   height: 100px;
+
+   position: absolute;
+   top: -10px;
+   left: 50%;
+   z-index: 1;
+
+   border: 2px solid red;
+   transition: all 0.8s ease 0s;
+}
+
+.button::before {
+   animation: rotate 20s infinite linear;
+}
+
+.button::after {
+   animation: rotate 25s infinite linear;
+}
+
+.button_text {
+   height: 80px;
+   padding: 0 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   
+   color: rgba(0, 0, 0, 0.3);
+   font-size: 24px;
+   text-transform: uppercase;
+   letter-spacing: 10px;
+
+   overflow: hidden;
+   border-radius: 50px;
+   transition: all 1s ease 0s;
+
+   position: relative;
+   top: 0;
+}
+
+.button_text::before,
+.button_text::after {
+   content: '';
+   width: 50%;
+   height: 100%;
+
+   position: absolute;
+
+   background-color: #eee;
+   transition: all 0.8s ease 0s;
+}
+
+.button_text::before {
+   content: '';
+   left: 0;
+   z-index: 2;
+}
+
+.button_text::after {
+   content: '';
+   right: 0;
+}
+
+.button_text span {
+   position: relative;
+   z-index: 2;
+}
+
+.button:hover::before,
+.button:hover::after {
+   content: '';
+   left: 100%;
+   opacity: 0;
+}
+
+.button:hover .button_text {
+   color: #fff;
+
+   top: -10px;
+   box-shadow: 0 5px 0 #0c5b52;
+
+   transition: all 0.5s ease 0.2s;
+}
+
+.button:hover .button_text::before,
+.button:hover .button_text::after {
+   content: '';
+   background-color: #18b5a4;
+}
+
+.button:hover .button_text::before {
+   content: '';
+   width: 100%;
+}
+
+.button:active .button_text {
+   top: -7px;
+   box-shadow: 0 2px 0 #0c5b52;
+
+   transition: all 0.3s ease 0s;
+}
+
+@keyframes rotate{
+   0%{
+      transform: rotate(0deg);
+   }
+   100%{
+      transform: rotate(360deg);
+   }
+}
